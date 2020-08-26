@@ -1,0 +1,27 @@
+Azure AD and Razor Pages - Assignment 6
+Student: Mariam Gogia
+Email:mag8802@g.harvard.edu
+------------------------------------------------------------------------------------------------
+** App service URL: https://hw6moviesharingwebapp.azurewebsites.net
+
+FIELDS THAT I ADDED TO MOVIE CLASS:
+------------------------------------------------------------------------------------------------
+UserID - The id of the logged in user, type string.
+isSharable - identifies if the movie is sharable or not, type boolean
+Request - identifies the status of the borrow request, type string
+------------------------------------------------------------------------------------------------
+Project Workflow Explained:
+1. Project's database has 2 tables: 1 table for the movies and another one for borrow requests.
+2. The owner's and authenticated users' web menu both contain "home" and "movies" items, however,the owner has one extra "requests" item where borrowRequests pile up.
+3. Once the user asks to borrow a movie, the "borrowRequest" object is created and put into database.
+4. The owner views these requests in "requests" page where she/he can approve/reject them.
+5. If the owner approves the request, the movie's sharedWith fields get filled and movie moves
+to "My Movies" section of the user's page. 
+5. If movie is rented, "return" button appears so that the owner can return it at any time.
+6. Return button also appears in user's view, accross the movie under My Movies list. 
+------------------------------------------------------------------------------------------------
+Container Registry:
+I implemented this project with Docker support, I created container registry too. However,
+I was unable to deploy it because visual studio required Docker Desktop which itself
+requirs Windows 10 Pro or higher operating system which I do not have.
+

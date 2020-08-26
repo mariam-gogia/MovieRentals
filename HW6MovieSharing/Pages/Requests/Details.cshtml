@@ -1,0 +1,61 @@
+﻿@page
+@model HW6MovieSharing.Pages.Requests.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>BorrowRequest</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.BorrowRequest.Title)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.BorrowRequest.Title)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.BorrowRequest.Category)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.BorrowRequest.Category)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.BorrowRequest.SharedWithFirstName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.BorrowRequest.SharedWithFirstName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.BorrowRequest.SharedWithLastName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.BorrowRequest.SharedWithLastName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.BorrowRequest.SharedwithEmailAddress)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.BorrowRequest.SharedwithEmailAddress)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.BorrowRequest.RequestDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.BorrowRequest.RequestDate)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.BorrowRequest.UserID)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.BorrowRequest.UserID)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.BorrowRequest.ID">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>

@@ -1,0 +1,87 @@
+﻿@page
+@model HW6MovieSharing.Pages.Requests.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Review/Approve</h1>
+
+<h4>Borrow Request</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="BorrowRequest.ID" />
+            <div class="form-group">
+                <label asp-for="BorrowRequest.Title" class="control-label"></label>
+                <input asp-for="BorrowRequest.Title" class="form-control" />
+                <span asp-validation-for="BorrowRequest.Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BorrowRequest.Category" class="control-label"></label>
+                <input asp-for="BorrowRequest.Category" class="form-control" />
+                <span asp-validation-for="BorrowRequest.Category" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BorrowRequest.SharedWithFirstName" class="control-label"></label>
+                <input asp-for="BorrowRequest.SharedWithFirstName" class="form-control" />
+                <span asp-validation-for="BorrowRequest.SharedWithFirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BorrowRequest.SharedWithLastName" class="control-label"></label>
+                <input asp-for="BorrowRequest.SharedWithLastName" class="form-control" />
+                <span asp-validation-for="BorrowRequest.SharedWithLastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BorrowRequest.SharedwithEmailAddress" class="control-label"></label>
+                <input asp-for="BorrowRequest.SharedwithEmailAddress" class="form-control" />
+                <span asp-validation-for="BorrowRequest.SharedwithEmailAddress" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BorrowRequest.RequestDate" class="control-label"></label>
+                <input asp-for="BorrowRequest.RequestDate" class="form-control" />
+                <span asp-validation-for="BorrowRequest.RequestDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label  asp-for="BorrowRequest.UserID" class="control-label"></label>
+                <input asp-for="BorrowRequest.UserID" class="form-control" />
+                <span asp-validation-for="BorrowRequest.UserID" class="text-danger"></span>
+            </div>
+            <label asp-for="BorrowRequest.RequestStatus" class="control-label"></label>
+            @{ 
+                List<SelectListItem> listItems = new List<SelectListItem>();
+                listItems.Add(new SelectListItem
+                {
+                    Text = "Review Pending",
+                    Value = "Review Pending",
+                    Selected = true
+                });
+                listItems.Add(new SelectListItem
+                {
+                    Text = "Approved",
+                    Value = "Approved",                   
+                });
+                listItems.Add(new SelectListItem
+                {
+                    Text = "Declined",
+                    Value = "Declined",
+                });
+
+                @Html.DropDownListFor(m=> m.BorrowRequest.RequestStatus, listItems)
+            }
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

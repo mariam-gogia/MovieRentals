@@ -1,0 +1,113 @@
+﻿@page
+@model HW6MovieSharing.Pages.Movies.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Movie List</h1>
+
+@if (User.ObjectIdentifier() == "c17f0d89-9862-45ca-beca-5b0c5ca2ae7e")
+{
+    <p>
+        <a asp-page="Create">Create New</a>
+    </p>
+}
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Movie[0].Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Movie[0].Category)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Movie[0].IsShareable)
+            </th>
+            @if (User.ObjectIdentifier() == "c17f0d89-9862-45ca-beca-5b0c5ca2ae7e")
+            {
+                <th>
+                    @Html.DisplayNameFor(model => model.Movie[0].Request)
+                </th>
+            }
+            <th>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Movie)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category)
+            </td>       
+            <td>
+                @Html.DisplayFor(modelItem => item.IsShareable)
+            </td>
+            <td>
+                @if(item.Request == "Approved")
+                {
+                    <label>Rented</label>
+                }
+            </td>
+
+            @if (User.ObjectIdentifier() == "c17f0d89-9862-45ca-beca-5b0c5ca2ae7e")
+            {
+        <td>
+            @if (item.Request == "Approved")
+            {
+                <a asp-page="./Return" asp-route-id="@item.ID">Return</a>
+            }
+           | <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
+
+              <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
+            <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+        </td>
+            }
+            else
+            {
+                <td>
+                    <a asp-page="./Borrow" asp-route-id="@item.ID">Borrow</a>
+                </td>
+            }
+        </tr>
+        }
+    </tbody>
+</table>
+@if (User.ObjectIdentifier() != "c17f0d89-9862-45ca-beca-5b0c5ca2ae7e")
+{
+    <h2>My Movies</h2>
+    <form method="post">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Movie[0].Title)
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.MyMovies)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Title)
+                        </td>
+                        <td>
+                            <a asp-page="./Return" asp-route-id="@item.ID">Return</a>
+
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </form>
+}
+@section Scripts{
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
