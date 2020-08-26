@@ -1,4 +1,4 @@
-Azure AD and Razor Pages - Assignment 6
+Azure AD and Razor Pages
 Student: Mariam Gogia
 Email:mag8802@g.harvard.edu
 ------------------------------------------------------------------------------------------------
